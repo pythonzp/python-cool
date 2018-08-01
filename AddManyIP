@@ -8,16 +8,14 @@ def addip(ip,hosts,networks,wangka):
     for ipaddr, host in zip(ip, hosts):
         cmd = "ifconfig " + wangka + ":" + str(host) + networks + str(ipaddr) + " netmask 255.255.255.0 up"
         os.system(cmd)
-
-
-
-
-
+        
+#——————————参数选项————————开始——————————————
 x=128                           #IP起始地址
 ip=[i for i in range(x,x+3)]    #数字表示共多少个IP（单独保留《print ip》 查看实际IP）
 hosts=[i for i in range(0,16)]  #IP个数
 networks=" 192.168.0."          #网络段
 wangka="eth0"                   #网卡名称
+#——————————参数选项————————结束——————————————
 
 print ip    #请先保留本条，打印IP地址最后一位确认
 
