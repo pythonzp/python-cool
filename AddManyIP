@@ -1,0 +1,30 @@
+# -*- coding: UTF-8 -*-
+import os
+def delip(ip,hosts,networks,wangka):
+    for ipaddr, host in zip(ip, hosts):
+        cmd = "ip addr del " + networks + str(ipaddr) + " dev " + wangka
+        os.system(cmd)
+def addip(ip,hosts,networks,wangka):
+    for ipaddr, host in zip(ip, hosts):
+        cmd = "ifconfig " + wangka + ":" + str(host) + networks + str(ipaddr) + " netmask 255.255.255.0 up"
+        os.system(cmd)
+
+
+
+
+
+x=128                           #IP起始地址
+ip=[i for i in range(x,x+3)]    #数字表示共多少个IP（单独保留《print ip》 查看实际IP）
+hosts=[i for i in range(0,16)]  #IP个数
+networks=" 192.168.0."          #网络段
+wangka="eth0"                   #网卡名称
+
+print ip    #请先保留本条，打印IP地址最后一位确认
+
+#—————————删除语句最前边的#即可执行—————————————————————————————————————————
+
+#delip(ip,hosts,networks,wangka) #本条为删除IP操作，操作请再三确认！！！！
+
+#addip(ip,hosts,networks,wangka) #本条为添加IP操作，操作前请先打印IP以确认。
+
+#—————————任意目录新建jb.py, 输入 python jb.py 执行脚本—————————————————————————————————————————
